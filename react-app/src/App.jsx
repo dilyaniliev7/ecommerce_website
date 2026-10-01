@@ -1,16 +1,28 @@
+import { useState } from "react"
+import "./App.css";
+import { Link, Route, Routes } from "react-router-dom";
 
-import './App.css'
-
-function App() {
-  const name = "Pedro"
-  const age = 24;
-
-  return (
-    <div>
-      <h1>Hello World, I am {name}, I am {age} years old</h1>
-      <p>Heyyy</p>
-    </div>
-  )
+function HomePage(){
+    return <h1>Home PAge</h1>
 }
 
-export default App
+function AboutPage(){
+    return <h1>About Page</h1>
+}
+
+
+function App(){
+    return (
+        <div>
+            <nav>
+                <Link></Link>
+            </nav>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="*" element={<h1>404 Not Found</h1>} />
+            </Routes>
+        </div>
+    )
+}
+export default App;
