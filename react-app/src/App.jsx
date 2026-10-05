@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react"
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home"
+import Auth from "./pages/Auth"
+import Checkout from "./pages/Checkout"
+import "./App.css";
+import Navbar from "./components/Navbar";
 
-export default function App(){
-    const [showCounter, setShowCounter] = useState(false);
-
+function App(){
     return (
-        <div>
-            <button onClick={() => setShowCounter(!showCounter)}>
-                {" "}
-                Show Counter
-            </button>
-            {showCounter && <Counter />}
+        <div className="app">
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Home />}/>
+                <Route path="/auth" element={<Auth />}/>
+                <Route path="/checkout" element={<Checkout />}/>
+            </Routes>
         </div>
     )
 }
 
-function Counter() {
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        console.log("Component Mounted")
-    }, [])
-
-    useEffect(() => {
-        console.log("Component Updated")
-    }, [count])
-
-    return <button onClick={() => setCount(count + 1)}>{count}</button>
-}
+export default App;
